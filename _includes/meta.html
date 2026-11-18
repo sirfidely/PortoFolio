@@ -1,0 +1,1 @@
+{%- assign mots = include.post.content | number_of_words -%}{%- assign mn = mots | divided_by: 200 | plus: 1 -%}{% include date.html d=include.post.date %} <i>•</i> {{ mn }} min de lecture <i>•</i> par Fidel N'zoué

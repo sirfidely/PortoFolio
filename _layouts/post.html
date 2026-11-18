@@ -1,19 +1,21 @@
 ---
 layout: default
 ---
-<header class="mast post-mast">
-  <div class="wrap narrow">
-    <a class="back" href="{{ '/blog/' | relative_url }}">← Tous les articles</a>
-    <p class="eyebrow">{% include date.html d=page.date %}{% assign mots = content | number_of_words %} · {{ mots | divided_by: 200 | plus: 1 }} min de lecture</p>
-    <h1>{{ page.title }}</h1>
-    {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
-    {%- if page.projet and page.projet != "" -%}{%- assign pr = site.projets | where: "slug", page.projet | first -%}{%- if pr -%}<p class="plink">Projet : <a href="{{ pr.url | relative_url }}">{{ pr.title }}</a></p>{%- endif -%}{%- endif %}
-    {% if page.tags.size > 0 %}<p class="ptags">{% for t in page.tags %}<span>{{ t }}</span>{% endfor %}</p>{% endif %}
-  </div>
+{%- if page.projet and page.projet != "" -%}{%- assign pr = site.projets | where: "slug", page.projet | first -%}{%- endif -%}
+<header class="story story-hero{% unless page.image %} noimg{% endunless %}"{% if page.image %} style="--img:url('{{ page.image | relative_url }}')"{% endif %}>
+  <span class="story-in">
+    {% if pr %}<a class="story-k" href="{{ pr.url | relative_url }}">{{ pr.title }}</a>{% endif %}
+    <h1 class="story-t">{{ page.title }}</h1>
+    <span class="story-m">{% include meta.html post=page %}</span>
+  </span>
 </header>
+<div class="wrap narrow post-intro">
+  <a class="back2" href="{{ '/blog/' | relative_url }}">← Journal de bord</a>
+  {% if page.description %}<p class="chapo">{{ page.description }}</p>{% endif %}
+  {% if page.tags.size > 0 %}<p class="ptags light">{% for t in page.tags %}<span>{{ t }}</span>{% endfor %}</p>{% endif %}
+</div>
 <main>
   <article class="wrap narrow prose">
-    {% if page.image %}<img class="cover" src="{{ page.image | relative_url }}" alt="">{% endif %}
     {{ content }}
     {% if page.sources.size > 0 %}
     <aside class="sources">

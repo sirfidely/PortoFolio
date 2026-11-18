@@ -1,0 +1,21 @@
+{%- comment -%} Articles empilés en pleine largeur. include.posts, include.small (bool), include.paginate (nombre visible avant « Charger plus »). {%- endcomment -%}
+<div class="stories{% if include.small %} small{% endif %}"{% if include.paginate %} data-paginate="{{ include.paginate }}"{% endif %}>
+{%- for post in include.posts -%}
+  {%- if post.projet and post.projet != "" -%}{%- assign pr = site.projets | where: "slug", post.projet | first -%}{%- else -%}{%- assign pr = nil -%}{%- endif -%}
+  <a class="story{% unless post.image %} noimg{% endunless %}" href="{{ post.url | relative_url }}"{% if post.image %} style="--img:url('{{ post.image | relative_url }}')"{% endif %}>
+    <span class="story-in">
+      {% if pr %}<span class="story-k">{{ pr.title }}</span>{% endif %}
+      <span class="story-t">{{ post.title }}</span>
+      <span class="story-m">{% include meta.html post=post %}</span>
+    </span>
+  </a>
+{%- endfor -%}
+</div>
+{% if include.paginate and include.posts.size > include.paginate %}
+<div class="wrap more-wrap"><button class="more" type="button" id="more-{{ include.id | default: 'posts' }}">Charger plus d'articles</button></div>
+<script>
+(function(){var box=document.currentScript.previousElementSibling.previousElementSibling,btn=document.currentScript.previousElementSibling.querySelector('button'),n=+box.dataset.paginate,items=[].slice.call(box.children),shown=n;
+function render(){items.forEach(function(el,i){el.hidden=i>=shown});btn.hidden=shown>=items.length}
+btn.addEventListener('click',function(){shown+=n;render()});render();})();
+</script>
+{% endif %}

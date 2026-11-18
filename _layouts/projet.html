@@ -23,13 +23,8 @@ layout: default
     {{ content }}
   </article>
   <section class="blog-list">
-    <div class="wrap narrow">
-      <h2 class="jt">Journal du projet</h2>
-      {% if articles.size > 0 %}
-        {% include postlist.html posts=articles %}
-      {% else %}
-        <p class="empty">Aucun article lié à ce projet pour l'instant.</p>
-      {% endif %}
-    </div>
+    <div class="wrap narrow"><h2 class="jt">Journal du projet</h2>
+    {% unless articles.size > 0 %}<p class="empty">Aucun article lié à ce projet pour l'instant.</p>{% endunless %}</div>
+    {% if articles.size > 0 %}{% include stories.html posts=articles small=true paginate=4 %}{% endif %}
   </section>
 </main>

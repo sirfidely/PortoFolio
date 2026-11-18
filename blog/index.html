@@ -1,23 +1,25 @@
 ---
 layout: default
-title: Blog
-description: Articles de Fidel Mondésir N'zoué sur le produit, la fintech et l'entrepreneuriat en Afrique de l'Ouest.
+title: Journal de bord
+description: Les coulisses des projets de Fidel Mondésir N'zoué. Chaque article est daté, rattaché à un projet, et son historique est public.
 ---
-<header class="mast post-mast">
-  <div class="wrap narrow">
-    <p class="eyebrow">Blog</p>
-    <h1>Journal de bord</h1>
-    <p class="lede">Les coulisses des projets : comment nous cadrons un besoin, les choix que nous faisons, ce qui marche et ce qui ne marche pas. Chaque article est daté, rattaché à un projet et son historique est public.</p>
+<header class="blog-head">
+  <div class="wrap">
+    <p class="eyebrow">Journal de bord</p>
+    <h1>Les coulisses des projets</h1>
+    <p>Comment nous cadrons un besoin, les choix que nous faisons, ce qui marche et ce qui ne marche pas. Chaque article est daté, rattaché à un projet, et son historique est public.</p>
   </div>
 </header>
 <main>
-  <section class="blog-list">
-    <div class="wrap narrow">
-      {% if site.posts.size > 0 %}
-        {% include postlist.html posts=site.posts %}
-      {% else %}
-        <p class="empty">Aucun article publié pour l'instant. Le premier arrive bientôt.</p>
-      {% endif %}
+  {% if site.posts.size > 0 %}
+    {% include stories.html posts=site.posts paginate=6 %}
+  {% else %}
+    <div class="wrap"><p class="empty">Aucun article publié pour l'instant.</p></div>
+  {% endif %}
+  <section class="follow">
+    <div class="wrap">
+      <h2>Suivre le journal</h2>
+      <p>Recevez les nouveaux articles avec le <a href="{{ '/blog/feed.xml' | relative_url }}">flux RSS</a>{% if site.data.contact.linkedin != "" %}, ou suivez-moi sur <a href="{{ site.data.contact.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}.</p>
     </div>
   </section>
 </main>

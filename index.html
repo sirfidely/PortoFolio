@@ -172,13 +172,13 @@ layout: default
       <div class="sh">
         <p class="eyebrow">Blog</p>
         <div>
-          <h2>Derniers articles</h2>
+          <h2>Derniers articles du journal de bord</h2>
           <p><a href="{{ '/blog/' | relative_url }}">Voir tous les articles →</a></p>
         </div>
       </div>
-      {% assign recents = site.posts | slice: 0, 3 %}
-      {% include postlist.html posts=recents %}
     </div>
+    {% assign recents = site.posts | slice: 0, 3 %}
+    {% include stories.html posts=recents small=true %}
   </section>
   {% endif %}
 
