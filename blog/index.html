@@ -16,6 +16,13 @@ description: Les coulisses des projets de Fidel Mondésir N'zoué. Chaque articl
   {% else %}
     <div class="wrap"><p class="empty">Aucun article publié pour l'instant.</p></div>
   {% endif %}
+  <section class="follow res-in-blog">
+    <div class="wrap">
+      <h2>Ressources gratuites</h2>
+      <p>Le contenu de mes formations, à lire directement ici. <a href="{{ '/ressources/' | relative_url }}">Toutes les ressources →</a></p>
+      {% include ressources.html %}
+    </div>
+  </section>
   <section class="follow">
     <div class="wrap">
       <h2>Suivre le journal</h2>

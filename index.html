@@ -189,7 +189,8 @@ layout: default
           <p class="eyebrow">Engagement communautaire</p>
           <h3 class="big">Transmettre aux jeunes et aux étudiants</h3>
           <p class="m">J'anime des formations auprès de structures de jeunesse et d'universités sur les soft skills et l'entrepreneuriat. L'objectif est d'aider chacun à passer d'une idée à un projet, puis à une startup.</p>
-          <div class="themes"><span>De l'idée à la startup</span><span>Travail en équipe</span><span>Prise de parole et pitch</span><span>Soft skills</span></div>
+          <div class="themes">{% assign fs = site.formations | sort: "ordre" %}{% for f in fs %}<a href="{{ f.url | relative_url }}">{{ f.title }}</a>{% endfor %}</div>
+          <p style="margin-top:16px"><a href="{{ '/ressources/' | relative_url }}">Lire mes formations en ligne →</a></p>
         </div>
         <div>
           <p class="eyebrow">Formation</p>

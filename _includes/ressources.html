@@ -1,0 +1,10 @@
+{%- assign fs = site.formations | sort: "ordre" -%}
+<div class="res-grid">
+{%- for f in fs -%}{%- assign t = forloop.index0 | modulo: 4 -%}
+  <a class="res t{{ t }}" href="{{ f.url | relative_url }}"{% if f.image and f.image != "" %} style="--img:url('{{ f.image | relative_url }}')"{% endif %}>
+    <span class="res-k">{{ f.format }}{% if f.duree != "" %} · {{ f.duree }}{% endif %}</span>
+    <span class="res-t">{{ f.title }}</span>
+    <span class="res-go">Lire la formation →</span>
+  </a>
+{%- endfor -%}
+</div>

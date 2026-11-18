@@ -26,8 +26,13 @@ collections:
   projets:
     output: true
     permalink: /projets/:name/
+  formations:
+    output: true
+    permalink: /ressources/:name/
 defaults:
   - scope: { path: "", type: projets }
     values: { layout: projet }
+  - scope: { path: "", type: formations }
+    values: { layout: formation }
   - scope: { path: "", type: posts }
     values: { layout: post }

@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<header class="story story-hero res-hero{% if page.image == "" or page.image == nil %} noimg{% endif %}"{% if page.image and page.image != "" %} style="--img:url('{{ page.image | relative_url }}')"{% endif %}>
+  <span class="story-in">
+    <span class="story-k">Ressource gratuite · {{ page.format }}</span>
+    <h1 class="story-t">{{ page.title }}</h1>
+    {% if page.sous_titre %}<span class="story-m">{{ page.sous_titre }}</span>{% endif %}
+  </span>
+</header>
+<div class="wrap narrow post-intro">
+  <a class="back2" href="{{ '/ressources/' | relative_url }}">← Toutes les ressources</a>
+  <dl class="rfacts">
+    {% if page.public != "" %}<div><dt>Pour qui</dt><dd>{{ page.public }}</dd></div>{% endif %}
+    {% if page.duree != "" %}<div><dt>Durée</dt><dd>{{ page.duree }}</dd></div>{% endif %}
+    {% if page.format != "" %}<div><dt>Format</dt><dd>{{ page.format }}</dd></div>{% endif %}
+    <div><dt>Formateur</dt><dd>Fidel Mondésir N'zoué</dd></div>
+  </dl>
+  {% if page.support and page.support != "" %}<p><a class="dl" href="{{ page.support | relative_url }}" target="_blank" rel="noopener">Ouvrir le support de la formation (PDF) ↗</a></p>{% endif %}
+</div>
+<main>
+  <article class="wrap narrow prose">
+    {% if page.modules.size > 0 %}
+    <aside class="prog">
+      <h2>Programme</h2>
+      <ol>{% for m in page.modules %}<li><b>{{ m.titre }}</b>{% if m.resume %}<span>{{ m.resume }}</span>{% endif %}</li>{% endfor %}</ol>
+    </aside>
+    {% endif %}
+    {{ content }}
+    {% if page.sessions.size > 0 %}
+    <aside class="sources">
+      <h2>Où j'ai donné cette formation</h2>
+      <ul>{% for s in page.sessions %}<li><b>{{ s.lieu }}</b>{% if s.date and s.date != "" %} · {{ s.date }}{% endif %}{% if s.participants and s.participants != "" %} · {{ s.participants }} participants{% endif %}{% if s.lien and s.lien != "" %} · <a href="{{ s.lien }}" target="_blank" rel="noopener">preuve ↗</a>{% endif %}</li>{% endfor %}</ul>
+    </aside>
+    {% endif %}
+    <p class="stamp">Ressource libre de lecture. Historique des modifications sur <a href="https://github.com/sirfidely/portofolio/commits/main/{{ page.path }}" target="_blank" rel="noopener">GitHub</a>.</p>
+  </article>
+</main>
