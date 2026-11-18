@@ -1,0 +1,35 @@
+---
+layout: default
+---
+{%- assign articles = site.posts | where: "projet", page.slug -%}
+<header class="mast post-mast">
+  <div class="wrap narrow">
+    <a class="back" href="{{ '/projets/' | relative_url }}">← Tous les projets</a>
+    <p class="eyebrow">{{ page.type }} · {{ page.categorie }}</p>
+    <h1>{{ page.title }}</h1>
+    <p class="lede">{{ page.resume }}</p>
+    <dl class="pfacts">
+      {% if page.role != "" %}<div><dt>Mon rôle</dt><dd>{{ page.role }}</dd></div>{% endif %}
+      {% if page.periode != "" %}<div><dt>Période</dt><dd>{{ page.periode }}</dd></div>{% endif %}
+      {% if page.statut != "" %}<div><dt>Statut</dt><dd>{{ page.statut }}</dd></div>{% endif %}
+      {% if page.lien != "" %}<div><dt>Accès</dt><dd><a href="{{ page.lien }}" target="_blank" rel="noopener">{{ page.lien | remove: "https://" | remove: "www." }} ↗</a></dd></div>{% endif %}
+    </dl>
+  </div>
+</header>
+<main>
+  <article class="wrap narrow prose">
+    {% if page.image != "" and page.image %}<img class="cover" src="{{ page.image | relative_url }}" alt="">{% endif %}
+    {% if page.fonctionnalites.size > 0 %}<p class="ptags light">{% for f in page.fonctionnalites %}<span>{{ f }}</span>{% endfor %}</p>{% endif %}
+    {{ content }}
+  </article>
+  <section class="blog-list">
+    <div class="wrap narrow">
+      <h2 class="jt">Journal du projet</h2>
+      {% if articles.size > 0 %}
+        {% include postlist.html posts=articles %}
+      {% else %}
+        <p class="empty">Aucun article lié à ce projet pour l'instant.</p>
+      {% endif %}
+    </div>
+  </section>
+</main>

@@ -1,0 +1,1 @@
+{%- assign s = include.n | append: "" -%}{%- assign chars = s | split: "" -%}{%- assign len = chars.size -%}{%- for c in chars -%}{{ c }}{%- assign rest = len | minus: forloop.index -%}{%- assign m = rest | modulo: 3 -%}{%- if rest > 0 and m == 0 -%}&#8239;{%- endif -%}{%- endfor -%}

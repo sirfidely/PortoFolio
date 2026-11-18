@@ -1,0 +1,23 @@
+---
+layout: default
+title: Blog
+description: Articles de Fidel Mondésir N'zoué sur le produit, la fintech et l'entrepreneuriat en Afrique de l'Ouest.
+---
+<header class="mast post-mast">
+  <div class="wrap narrow">
+    <p class="eyebrow">Blog</p>
+    <h1>Journal de bord</h1>
+    <p class="lede">Les coulisses des projets : comment nous cadrons un besoin, les choix que nous faisons, ce qui marche et ce qui ne marche pas. Chaque article est daté, rattaché à un projet et son historique est public.</p>
+  </div>
+</header>
+<main>
+  <section class="blog-list">
+    <div class="wrap narrow">
+      {% if site.posts.size > 0 %}
+        {% include postlist.html posts=site.posts %}
+      {% else %}
+        <p class="empty">Aucun article publié pour l'instant. Le premier arrive bientôt.</p>
+      {% endif %}
+    </div>
+  </section>
+</main>

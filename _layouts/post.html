@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<header class="mast post-mast">
+  <div class="wrap narrow">
+    <a class="back" href="{{ '/blog/' | relative_url }}">← Tous les articles</a>
+    <p class="eyebrow">{% include date.html d=page.date %}{% assign mots = content | number_of_words %} · {{ mots | divided_by: 200 | plus: 1 }} min de lecture</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+    {%- if page.projet and page.projet != "" -%}{%- assign pr = site.projets | where: "slug", page.projet | first -%}{%- if pr -%}<p class="plink">Projet : <a href="{{ pr.url | relative_url }}">{{ pr.title }}</a></p>{%- endif -%}{%- endif %}
+    {% if page.tags.size > 0 %}<p class="ptags">{% for t in page.tags %}<span>{{ t }}</span>{% endfor %}</p>{% endif %}
+  </div>
+</header>
+<main>
+  <article class="wrap narrow prose">
+    {% if page.image %}<img class="cover" src="{{ page.image | relative_url }}" alt="">{% endif %}
+    {{ content }}
+    {% if page.sources.size > 0 %}
+    <aside class="sources">
+      <h2>Sources et preuves</h2>
+      <ol>{% for src in page.sources %}<li>{% if src.lien and src.lien != "" %}<a href="{{ src.lien }}" target="_blank" rel="noopener">{{ src.titre | default: src.lien }}</a>{% else %}{{ src.titre }}{% endif %}</li>{% endfor %}</ol>
+    </aside>
+    {% endif %}
+    <p class="stamp">Publié le {% include date.html d=page.date %}{% if page.last_modified_at %} · mis à jour le {% include date.html d=page.last_modified_at %}{% endif %}. L'historique complet de cet article est public sur <a href="https://github.com/sirfidely/portofolio/commits/main/{{ page.path }}" target="_blank" rel="noopener">GitHub</a>.</p>
+  </article>
+  <div class="wrap narrow post-nav">
+    {% if page.previous %}<a href="{{ page.previous.url | relative_url }}"><small>Article précédent</small>{{ page.previous.title }}</a>{% else %}<span></span>{% endif %}
+    {% if page.next %}<a class="nx" href="{{ page.next.url | relative_url }}"><small>Article suivant</small>{{ page.next.title }}</a>{% endif %}
+  </div>
+</main>

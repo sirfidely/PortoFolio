@@ -1,264 +1,35 @@
-<!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Fidel Mondésir N'zoué, Chief Product Officer et co-fondateur de GeniusPay. Produits, parcours et expertise.">
-<title>Fidel N'zoué Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: navy masthead with a "relevé de transactions" card, then a single editorial column (max 1120px) of sections: chiffres, cas GeniusPay, produits, parcours, expertise, engagement, formation, contact. */
-:root{
-  --ink:#0f172a;          /* navy GeniusPay */
-  --ink-2:#1e293b;
-  --blue:#2563eb;
-  --cyan:#06b6d4;
-  --bg:#f6f8fb;
-  --surface:#ffffff;
-  --fg:#0f172a;
-  --muted:#5b6476;
-  --line:#e2e7ef;
-  --chip:#eef3fb;
-  --mast-fg:#e8eef8;
-  --mast-muted:#9fb0c8;
-  --mast-line:rgba(159,176,200,.22);
-  --link:#1d4ed8;
-  --f-display:"Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
-  --f-body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0b1120; --surface:#111a2e; --fg:#e6ecf5; --muted:#9aa7bd; --line:#1f2a40;
-    --chip:#16223a; --link:#7aa7ff; --blue:#5b8cff; --ink:#070d1a; --ink-2:#0f172a;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0b1120; --surface:#111a2e; --fg:#e6ecf5; --muted:#9aa7bd; --line:#1f2a40;
-  --chip:#16223a; --link:#7aa7ff; --blue:#5b8cff; --ink:#070d1a; --ink-2:#0f172a;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{color-scheme:light}
-body{margin:0}
-img{max-width:100%}
-[hidden]{display:none!important}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ink)}
-a{color:var(--link);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15}
-p{margin:0}
-.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.num{font-variant-numeric:tabular-nums}
-
-/* Nav */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ink);border-bottom:1px solid var(--mast-line)}
-.nav .wrap{display:flex;align-items:center;gap:24px;padding-block:12px}
-.brand{font-family:var(--f-display);font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.01em;white-space:nowrap}
-.brand span{color:var(--cyan)}
-.nav ul{display:flex;gap:20px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
-.nav ul::-webkit-scrollbar{display:none}
-.nav a.l{color:var(--mast-muted);text-decoration:none;font-size:14px;font-weight:500;white-space:nowrap}
-.nav a.l:hover{color:#fff}
-
-/* Masthead */
-.mast{background:var(--ink);color:var(--mast-fg)}
-.mast .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:56px;align-items:center;padding-block:72px 80px}
-.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan)}
-.mast h1{font-size:clamp(40px,6vw,68px);font-weight:800;letter-spacing:-.03em;color:#fff;margin-top:14px}
-.mast h1 em{font-style:normal;color:#7aa7ff}
-.role{font-family:var(--f-display);font-size:20px;font-weight:600;color:#fff;margin-top:14px}
-.role small{display:block;font-family:var(--f-body);font-size:15px;font-weight:400;color:var(--mast-muted);margin-top:4px}
-.lede{max-width:56ch;color:var(--mast-fg);margin-top:22px;font-size:17px}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:8px;font-weight:600;font-size:15px;text-decoration:none}
-.btn.p{background:var(--cyan);color:#04202a}
-.btn.s{border:1px solid var(--mast-line);color:#fff}
-.btn:hover{filter:brightness(1.08)}
-
-/* Statement card: the hero's one bold element */
-.stmt{background:#fbfcfe;color:#0f172a;border-radius:6px;padding:26px 26px 20px;font-family:var(--f-mono);font-size:13px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55);position:relative}
-.stmt::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;
-  background:radial-gradient(circle at 8px 0,transparent 7px,#fbfcfe 7.5px) 0 0/16px 10px repeat-x}
-.stmt .hd{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed #c7d0de;padding-bottom:12px;margin-bottom:12px}
-.stmt .hd b{font-family:var(--f-display);font-size:16px;letter-spacing:-.01em}
-.stmt .hd span{color:#5b6476;text-align:right}
-.stmt dl{margin:0;display:grid;gap:7px}
-.stmt .r{display:flex;justify-content:space-between;gap:12px}
-.stmt dt{color:#5b6476}
-.stmt dd{margin:0;font-weight:500;text-align:right}
-.stmt .tot{border-top:1px dashed #c7d0de;margin-top:12px;padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.stmt .tot span{color:#5b6476}
-.stmt .tot b{font-family:var(--f-display);font-size:24px;font-weight:800;letter-spacing:-.02em;color:#1d4ed8}
-.stmt .ft{margin-top:14px;color:#8a93a5;font-size:11px;text-align:center}
-
-/* Sections */
-section{padding-block:88px}
-section + section{border-top:1px solid var(--line)}
-.sh{display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px;margin-bottom:44px;align-items:end}
-.sh .eyebrow{color:var(--blue)}
-.sh h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;letter-spacing:-.02em}
-.sh p{color:var(--muted);max-width:62ch;margin-top:10px}
-
-/* Figures band */
-.figs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--fg)}
-.fig{padding:22px 18px 6px 0}
-.fig + .fig{padding-left:18px;border-left:1px solid var(--line)}
-.fig b{display:block;font-family:var(--f-display);font-weight:800;font-size:clamp(26px,3vw,36px);letter-spacing:-.02em;line-height:1.1}
-.fig b small{font-size:.5em;font-weight:700;color:var(--muted);margin-left:3px}
-.fig span{display:block;color:var(--muted);font-size:14px;margin-top:6px}
-.fignote{margin-top:22px;font-size:14px;color:var(--muted)}
-.fignote code{font-family:var(--f-mono);font-size:13px;background:var(--chip);padding:2px 6px;border-radius:4px;color:var(--fg)}
-
-/* Case study */
-.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
-.case h3{font-size:19px;margin-bottom:12px}
-.case ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
-.case li{padding-left:22px;position:relative}
-.case li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--cyan)}
-.pricing{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:28px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface)}
-.pricing div{padding:18px 20px}
-.pricing div + div{border-left:1px solid var(--line)}
-.pricing small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.pricing b{display:block;font-family:var(--f-display);font-size:22px;margin-top:6px}
-.pricing span{font-size:14px;color:var(--muted)}
-
-/* Products */
-.prods{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.prod{background:var(--surface);padding:28px 28px 26px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.prod .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-.prod h3{font-size:22px;letter-spacing:-.01em}
-.prod .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
-.prod p{color:var(--muted)}
-.prod .feat{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-.prod .feat span{font-size:13px;background:var(--chip);padding:3px 9px;border-radius:999px}
-.prod a.go{margin-top:auto;padding-top:8px;font-weight:600;font-size:15px;text-decoration:none}
-.prod a.go:hover{text-decoration:underline}
-.prod .nolink{margin-top:auto;padding-top:8px;font-size:14px;color:var(--muted)}
-.others{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline}
-.others b{font-family:var(--f-display)}
-.others span{color:var(--muted)}
-
-/* Timeline */
-.tl{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.tl li{display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px;padding-block:28px;border-top:1px solid var(--line)}
-.tl li:first-child{border-top:2px solid var(--fg)}
-.tl .when{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
-.tl .when b{display:block;font-family:var(--f-display);font-size:15px;color:var(--fg);margin-bottom:2px}
-.tl h3{font-size:20px}
-.tl .org{color:var(--blue);font-weight:600;font-size:15px;margin-top:2px}
-.tl ul{margin:12px 0 0;padding-left:18px;display:grid;gap:6px}
-.tl ul li{display:list-item;padding:0;border:0;grid-template-columns:none}
-.tl ul li::marker{color:var(--cyan)}
-
-/* Expertise */
-.exp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 40px}
-.exp div{border-top:1px solid var(--line);padding-top:16px}
-.exp h3{font-size:17px}
-.exp p{color:var(--muted);font-size:15px;margin-top:6px}
-.tools{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 40px}
-.tools h4{margin:0 0 8px;font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
-.tools p{display:flex;flex-wrap:wrap;gap:6px}
-.tools span{font-size:14px;border:1px solid var(--line);background:var(--surface);padding:4px 10px;border-radius:6px}
-
-/* Engagement + formation */
-.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px}
-.two h3{font-size:20px;margin-bottom:12px}
-.two p + p{margin-top:12px}
-.two .m{color:var(--muted)}
-.themes{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.themes span{font-size:14px;background:var(--chip);padding:5px 12px;border-radius:999px}
-.edu{list-style:none;margin:0;padding:0}
-.edu li{display:flex;justify-content:space-between;gap:16px;padding-block:14px;border-top:1px solid var(--line)}
-.edu li:last-child{border-bottom:1px solid var(--line)}
-.edu b{font-family:var(--f-display);font-weight:700}
-.edu span{color:var(--muted);font-size:14px}
-.edu .y{font-family:var(--f-mono);font-size:13px;color:var(--muted);white-space:nowrap}
-
-/* Contact */
-.contact{background:var(--ink);color:var(--mast-fg);border-top:0!important}
-.contact .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:end}
-.contact h2{color:#fff;font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-.02em}
-.contact p{color:var(--mast-muted);margin-top:14px;max-width:52ch}
-.contact dl{margin:0;display:grid;gap:0}
-.contact .r{display:flex;justify-content:space-between;gap:16px;padding-block:12px;border-top:1px solid var(--mast-line)}
-.contact dt{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mast-muted)}
-.contact dd{margin:0;text-align:right}
-.contact dd a{color:#fff}
-.contact .todo{color:#fbbf24;font-size:14px}
-footer{background:var(--ink);color:var(--mast-muted);font-size:13px}
-footer .wrap{padding-block:22px 28px;border-top:1px solid var(--mast-line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-
-@media (max-width:900px){
-  .mast .wrap{grid-template-columns:1fr;gap:44px;padding-block:52px 64px}
-  .sh,.tl li{grid-template-columns:1fr;gap:10px}
-  .case,.two,.contact .wrap{grid-template-columns:1fr;gap:36px}
-  .exp,.tools{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .figs{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .fig:nth-child(4){border-left:0;padding-left:0}
-  section{padding-block:64px}
-}
-@media (max-width:600px){
-  .prods,.exp,.tools,.pricing{grid-template-columns:1fr}
-  .pricing div + div{border-left:0;border-top:1px solid var(--line)}
-  .figs{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .fig:nth-child(n){border-left:0;padding-left:0}
-  .fig:nth-child(even){border-left:1px solid var(--line);padding-left:16px}
-  .prod{padding:22px 20px}
-  .nav ul{gap:16px}
-  .brand{display:none}
-  .nav ul{margin-left:0}
-  .contact dd{text-align:left}
-  .contact .r{flex-direction:column;gap:2px}
-}
-@media (prefers-reduced-motion:no-preference){
-  html{scroll-behavior:smooth}
-}
-</style>
-</head>
-<body>
-<nav class="nav" aria-label="Sections">
-  <div class="wrap">
-    <a class="brand" href="#top">Fidel N'zoué<span>.</span></a>
-    <ul>
-      <li><a class="l" href="#geniuspay">GeniusPay</a></li>
-      <li><a class="l" href="#produits">Produits</a></li>
-      <li><a class="l" href="#parcours">Parcours</a></li>
-      <li><a class="l" href="#expertise">Expertise</a></li>
-      <li><a class="l" href="#engagement">Engagement</a></li>
-      <li><a class="l" href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
+---
+layout: default
+---
+{%- assign gp = site.data.geniuspay -%}
+{%- assign ct = site.data.contact -%}
+{%- assign vol_m = gp.volume | divided_by: 100000.0 | round | divided_by: 10.0 | replace: ".", "," -%}
+{%- assign panier = gp.volume | times: 1.0 | divided_by: gp.transactions | divided_by: 10 | round | times: 10 -%}
 <header class="mast" id="top">
   <div class="wrap">
     <div>
+      {% if ct.photo != "" and ct.photo %}<img class="avatar" src="{{ ct.photo | relative_url }}" alt="Fidel Mondésir N'zoué">{% endif %}
       <p class="eyebrow">Portfolio · Abidjan, Côte d'Ivoire</p>
       <h1>Fidel Mondésir <em>N'zoué</em></h1>
       <p class="role">Chief Product Officer, co-fondateur de GeniusPay
         <small>Concepteur produit Tech &amp; Digital · Intrapreneur chez Genius Groups</small></p>
-      <p class="lede">Je conçois des produits numériques pour l'Afrique de l'Ouest, du cadrage du besoin jusqu'à la mise sur le marché. Depuis 2021, j'ai lancé plus de 12 produits : paiement en ligne, frais scolaires, dons aux églises, campus numérique. Le dernier, GeniusPay, a traité plus de 411 millions de FCFA.</p>
+      <p class="lede">Je conçois des produits numériques pour l'Afrique de l'Ouest, du cadrage du besoin jusqu'à la mise sur le marché. Depuis 2021, j'ai lancé plus de 12 produits : paiement en ligne, frais scolaires, dons aux églises, campus numérique. Le dernier, GeniusPay, a traité plus de {{ gp.volume | divided_by: 1000000 }} millions de FCFA.</p>
       <div class="cta">
         <a class="btn p" href="#produits">Voir les produits</a>
-        <a class="btn s" href="https://geniuspay.ci" target="_blank" rel="noopener">geniuspay.ci ↗</a>
+        <a class="btn s" href="{{ '/blog/' | relative_url }}">Lire le blog</a>
       </div>
     </div>
 
     <aside class="stmt" aria-label="Relevé GeniusPay">
-      <div class="hd"><b>GeniusPay</b><span>Relevé cumulé<br>au 18/11/2026</span></div>
+      <div class="hd"><b>GeniusPay</b><span>Relevé cumulé<br>au {{ gp.date_maj }}</span></div>
       <dl class="num">
-        <div class="r"><dt>Transactions</dt><dd>38 396</dd></div>
-        <div class="r"><dt>Marchands</dt><dd>3 184</dd></div>
-        <div class="r"><dt>Inscriptions</dt><dd>5 848</dd></div>
-        <div class="r"><dt>Pays couverts</dt><dd>26+</dd></div>
-        <div class="r"><dt>Panier moyen</dt><dd>≈ 10 720 FCFA</dd></div>
+        <div class="r"><dt>Transactions</dt><dd>{% include nombre.html n=gp.transactions %}</dd></div>
+        <div class="r"><dt>Marchands</dt><dd>{% include nombre.html n=gp.marchands %}</dd></div>
+        <div class="r"><dt>Inscriptions</dt><dd>{% include nombre.html n=gp.inscriptions %}</dd></div>
+        <div class="r"><dt>Pays couverts</dt><dd>{{ gp.pays }}</dd></div>
+        <div class="r"><dt>Panier moyen</dt><dd>≈ {% include nombre.html n=panier %} FCFA</dd></div>
       </dl>
-      <div class="tot num"><span>Volume traité</span><b>411 587 913 F</b></div>
+      <div class="tot num"><span>Volume traité</span><b>{% include nombre.html n=gp.volume %} F</b></div>
       <p class="ft">Mobile Money · Carte bancaire · API &amp; SDKs</p>
     </aside>
   </div>
@@ -276,15 +47,15 @@ footer .wrap{padding-block:22px 28px;border-top:1px solid var(--mast-line);displ
       </div>
 
       <div class="figs num">
-        <div class="fig"><b>411,6<small>M FCFA</small></b><span>volume global traité</span></div>
-        <div class="fig"><b>38 396</b><span>transactions</span></div>
-        <div class="fig"><b>3 184</b><span>marchands</span></div>
-        <div class="fig"><b>5 848</b><span>inscriptions</span></div>
-        <div class="fig"><b>26+</b><span>pays couverts</span></div>
+        <div class="fig"><b>{{ vol_m }}<small>M FCFA</small></b><span>volume global traité</span></div>
+        <div class="fig"><b>{% include nombre.html n=gp.transactions %}</b><span>transactions</span></div>
+        <div class="fig"><b>{% include nombre.html n=gp.marchands %}</b><span>marchands</span></div>
+        <div class="fig"><b>{% include nombre.html n=gp.inscriptions %}</b><span>inscriptions</span></div>
+        <div class="fig"><b>{{ gp.pays }}</b><span>pays couverts</span></div>
       </div>
-      <p class="fignote">Chiffres de la console GeniusPay. Panier moyen calculé : <code>411 587 913 ÷ 38 396 ≈ 10 720 FCFA</code>.</p>
+      <p class="fignote">Chiffres de la console GeniusPay au {{ gp.date_maj }}. Panier moyen calculé : <code>volume ÷ transactions ≈ {% include nombre.html n=panier %} FCFA</code>.</p>
 
-      <div class="case" style="margin-top:56px">
+      <div class="case">
         <div>
           <h3>Mon rôle</h3>
           <ul>
@@ -297,11 +68,12 @@ footer .wrap{padding-block:22px 28px;border-top:1px solid var(--mast-line);displ
         </div>
         <div>
           <h3>Le modèle économique que j'ai conçu</h3>
-          <p class="m" style="color:var(--muted)">Deux offres simples, pensées pour qu'un petit commerçant puisse démarrer sans frais fixes et passer à l'offre PRO quand son volume augmente.</p>
+          <p class="m">Deux offres simples, pensées pour qu'un petit commerçant puisse démarrer sans frais fixes et passer à l'offre PRO quand son volume augmente.</p>
           <div class="pricing num">
             <div><small>Standard</small><b>Gratuit</b><span>1 % + 100 F par transaction</span></div>
             <div><small>PRO</small><b>10 000 F</b><span>par mois</span></div>
           </div>
+          <p class="m" style="margin-top:18px"><a href="https://geniuspay.ci" target="_blank" rel="noopener">geniuspay.ci ↗</a></p>
         </div>
       </div>
     </div>
@@ -309,48 +81,16 @@ footer .wrap{padding-block:22px 28px;border-top:1px solid var(--mast-line);displ
 
   <section id="produits">
     <div class="wrap">
+      {%- assign tous = site.projets | sort: "ordre" -%}
+      {%- assign produits = tous | where: "type", "Produit" -%}
       <div class="sh">
-        <p class="eyebrow">Produits</p>
+        <p class="eyebrow">Projets</p>
         <div>
-          <h2>D'autres produits que j'ai conçus et lancés</h2>
-          <p>Chez Genius Groups, chaque produit répond à un problème concret d'un secteur : écoles, universités, églises, entreprises.</p>
+          <h2>Les produits que j'ai conçus et lancés</h2>
+          <p>{{ produits.size }} produits, chacun avec sa fiche et son journal de bord. <a href="{{ '/projets/' | relative_url }}">Voir aussi les activités →</a></p>
         </div>
       </div>
-
-      <div class="prods">
-        <article class="prod">
-          <div class="top"><h3>eScolarité</h3><span class="tag">EdTech · Paiement</span></div>
-          <p>Gestion, collecte et contrôle des frais scolaires et universitaires. Les parents paient en ligne, l'établissement encaisse et suit ses créances en temps réel.</p>
-          <div class="feat"><span>Mobile Money, carte, caisse</span><span>Reçus automatiques</span><span>Suivi des créances</span><span>Portail parent</span></div>
-          <a class="go" href="https://www.escolarite.com" target="_blank" rel="noopener">escolarite.com ↗</a>
-        </article>
-        <article class="prod">
-          <div class="top"><h3>eUniversité</h3><span class="tag">EdTech · Campus numérique</span></div>
-          <p>Le campus connecté des universités. Le module Live sert aux quiz en classe avec classement en direct. Le module Study transforme un cours en jeu de course, avec une révision au bon moment.</p>
-          <div class="feat"><span>Live</span><span>Study</span><span>Cours en ligne</span></div>
-          <a class="go" href="https://live.universite.ci" target="_blank" rel="noopener">live.universite.ci ↗</a>
-        </article>
-        <article class="prod">
-          <div class="top"><h3>MonÉglise.Pay</h3><span class="tag">Dons · Communautés</span></div>
-          <p>Une plateforme qui permet aux églises de recevoir dîmes, offrandes et dons en ligne, et de suivre leurs contributions.</p>
-          <div class="feat"><span>Dons en ligne</span><span>Mobile Money</span><span>Suivi des contributions</span></div>
-          <a class="go" href="https://moneglise.ci" target="_blank" rel="noopener">moneglise.ci ↗</a>
-        </article>
-        <article class="prod">
-          <div class="top"><h3>G-Work</h3><span class="tag">Productivité</span></div>
-          <p>L'espace de travail de Genius Groups pour organiser les équipes, les projets et le suivi des tâches.</p>
-          <div class="feat"><span>Équipes</span><span>Projets</span><span>Tâches</span></div>
-          <a class="go" href="https://work.genius.ci" target="_blank" rel="noopener">work.genius.ci ↗</a>
-        </article>
-      </div>
-
-      <div class="others">
-        <b>Aussi</b>
-        <span>CHECK</span>
-        <span>MVEC</span>
-        <span>FaisChap</span>
-        <span>Genius Academy</span>
-      </div>
+      <div class="prods">{% for p in produits %}{% include projetcard.html p=p %}{% endfor %}</div>
     </div>
   </section>
 
@@ -368,7 +108,7 @@ footer .wrap{padding-block:22px 28px;border-top:1px solid var(--mast-line);displ
             <p class="org">GeniusPay, Inc.</p>
             <ul>
               <li>Vision, roadmap et lancement de la passerelle de paiement.</li>
-              <li>411,6 M FCFA traités, 38 396 transactions, 3 184 marchands.</li>
+              <li>{{ vol_m }} M FCFA traités, {% include nombre.html n=gp.transactions %} transactions, {% include nombre.html n=gp.marchands %} marchands.</li>
               <li>Offre gratuite et offre PRO, API et 6 SDKs.</li>
             </ul>
           </div>
@@ -390,9 +130,7 @@ footer .wrap{padding-block:22px 28px;border-top:1px solid var(--mast-line);displ
           <div>
             <h3>Fondateur et animateur</h3>
             <p class="org">Genius Academy</p>
-            <ul>
-              <li>Centre de formation devenu la base de l'offre eUniversité.</li>
-            </ul>
+            <ul><li>Centre de formation devenu la base de l'offre eUniversité.</li></ul>
           </div>
         </li>
         <li>
@@ -428,18 +166,34 @@ footer .wrap{padding-block:22px 28px;border-top:1px solid var(--mast-line);displ
     </div>
   </section>
 
+  {% if site.posts.size > 0 %}
+  <section id="blog">
+    <div class="wrap">
+      <div class="sh">
+        <p class="eyebrow">Blog</p>
+        <div>
+          <h2>Derniers articles</h2>
+          <p><a href="{{ '/blog/' | relative_url }}">Voir tous les articles →</a></p>
+        </div>
+      </div>
+      {% assign recents = site.posts | slice: 0, 3 %}
+      {% include postlist.html posts=recents %}
+    </div>
+  </section>
+  {% endif %}
+
   <section id="engagement">
     <div class="wrap">
       <div class="two">
         <div>
-          <p class="eyebrow" style="color:var(--blue)">Engagement communautaire</p>
-          <h3 style="margin-top:10px;font-size:clamp(26px,3vw,34px);letter-spacing:-.02em">Transmettre aux jeunes et aux étudiants</h3>
+          <p class="eyebrow">Engagement communautaire</p>
+          <h3 class="big">Transmettre aux jeunes et aux étudiants</h3>
           <p class="m">J'anime des formations auprès de structures de jeunesse et d'universités sur les soft skills et l'entrepreneuriat. L'objectif est d'aider chacun à passer d'une idée à un projet, puis à une startup.</p>
           <div class="themes"><span>De l'idée à la startup</span><span>Travail en équipe</span><span>Prise de parole et pitch</span><span>Soft skills</span></div>
         </div>
         <div>
-          <p class="eyebrow" style="color:var(--blue)">Formation</p>
-          <ul class="edu" style="margin-top:14px">
+          <p class="eyebrow">Formation</p>
+          <ul class="edu">
             <li><div><b>Licence DAWM</b><br><span>Développement d'applications web et mobiles</span></div><span class="y"></span></li>
             <li><div><b>BTS IDA</b><br><span>Informatique développeur d'applications</span></div><span class="y">2021 – 2023</span></li>
             <li><div><b>Attestation PMI</b><br><span>Gestion de projet</span></div><span class="y"></span></li>
@@ -451,24 +205,18 @@ footer .wrap{padding-block:22px 28px;border-top:1px solid var(--mast-line);displ
   </section>
 
   <section class="contact" id="contact">
-    <div class="wrap" style="padding-block:8px">
+    <div class="wrap">
       <div>
         <p class="eyebrow">Contact</p>
-        <h2 style="margin-top:12px">Un produit à lancer ? Parlons-en.</h2>
+        <h2>Un produit à lancer ? Parlons-en.</h2>
         <p>De l'idée au produit, du produit au marché.</p>
       </div>
       <dl>
         <div class="r"><dt>Produit phare</dt><dd><a href="https://geniuspay.ci" target="_blank" rel="noopener">geniuspay.ci</a></dd></div>
-        <div class="r"><dt>E-mail</dt><dd class="todo">à compléter</dd></div>
-        <div class="r"><dt>Téléphone</dt><dd class="todo">à compléter</dd></div>
-        <div class="r"><dt>LinkedIn</dt><dd class="todo">à compléter</dd></div>
+        {% if ct.email != "" and ct.email %}<div class="r"><dt>E-mail</dt><dd><a href="mailto:{{ ct.email }}">{{ ct.email }}</a></dd></div>{% endif %}
+        {% if ct.telephone != "" and ct.telephone %}<div class="r"><dt>Téléphone</dt><dd>{{ ct.telephone }}</dd></div>{% endif %}
+        {% if ct.linkedin != "" and ct.linkedin %}<div class="r"><dt>LinkedIn</dt><dd><a href="{{ ct.linkedin }}" target="_blank" rel="noopener">Voir le profil ↗</a></dd></div>{% endif %}
       </dl>
     </div>
   </section>
 </main>
-
-<footer>
-  <div class="wrap"><span>© 2026 Fidel Mondésir N'zoué</span><span>Abidjan, Côte d'Ivoire</span></div>
-</footer>
-</body>
-</html>

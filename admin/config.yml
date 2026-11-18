@@ -1,0 +1,95 @@
+# Backoffice du portfolio (Sveltia CMS, compatible Decap CMS).
+# Chaque enregistrement crée un commit sur la branche main, puis le site se reconstruit.
+backend:
+  name: github
+  repo: sirfidely/portofolio
+  branch: main
+  commit_messages:
+    create: "Blog : nouvel article « {{slug}} »"
+    update: "Mise à jour : {{collection}} « {{slug}} »"
+    delete: "Suppression : {{collection}} « {{slug}} »"
+    uploadMedia: "Média ajouté : {{path}}"
+    deleteMedia: "Média supprimé : {{path}}"
+
+site_url: https://geniuslabs.tech
+display_url: https://geniuslabs.tech
+locale: fr
+
+media_folder: assets/images/uploads
+public_folder: /assets/images/uploads
+
+collections:
+  - name: blog
+    label: Journal (articles)
+    label_singular: Article
+    folder: _posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} · {{date | date('DD/MM/YYYY')}}"
+    sortable_fields: [date, title]
+    preview_path: "blog/{{year}}/{{month}}/{{filename}}/"
+    fields:
+      - { name: layout, widget: hidden, default: post }
+      - { name: title, label: Titre, widget: string }
+      - { name: date, label: Date de publication, widget: datetime }
+      - { name: description, label: Résumé (affiché dans la liste et sur Google), widget: text, required: false }
+      - { name: image, label: Image de couverture, widget: image, required: false }
+      - { name: projet, label: Projet concerné, widget: relation, collection: projets, value_field: "{{slug}}", search_fields: [title], display_fields: [title], required: false }
+      - { name: tags, label: Thèmes, widget: list, required: false, hint: "Séparer par des virgules, ex. Produit, Fintech" }
+      - { name: published, label: Publié, widget: boolean, default: true, hint: "Décoché = brouillon, invisible sur le site" }
+      - name: sources
+        label: Sources et preuves
+        label_singular: Source
+        widget: list
+        required: false
+        hint: "Liens, captures ou documents qui permettent de vérifier ce que dit l'article"
+        fields:
+          - { name: titre, label: Description, widget: string }
+          - { name: lien, label: Lien, widget: string, required: false }
+      - { name: body, label: Contenu, widget: markdown }
+
+  - name: projets
+    label: Projets et activités
+    label_singular: Projet
+    folder: _projets
+    create: true
+    slug: "{{slug}}"
+    summary: "{{ordre}}. {{title}} ({{type}})"
+    sortable_fields: [ordre, title]
+    preview_path: "projets/{{slug}}/"
+    fields:
+      - { name: title, label: Nom, widget: string }
+      - { name: type, label: Type, widget: select, options: [Produit, Activité], default: Produit }
+      - { name: ordre, label: "Ordre d'affichage (1 = en premier)", widget: number, value_type: int }
+      - { name: categorie, label: "Catégorie (ex. EdTech · Paiement)", widget: string }
+      - { name: role, label: Mon rôle, widget: string, required: false }
+      - { name: periode, label: "Période (ex. 2022 – 2025)", widget: string, required: false }
+      - { name: statut, label: Statut, widget: select, options: ["En production", "En cours", "En conception", "Terminé", "Archivé"], required: false }
+      - { name: resume, label: Résumé (une ou deux phrases), widget: text }
+      - { name: fonctionnalites, label: Fonctionnalités, widget: list, required: false }
+      - { name: lien, label: Lien d'accès, widget: string, required: false }
+      - { name: image, label: Image ou capture, widget: image, required: false }
+      - { name: body, label: Étude de cas, widget: markdown, required: false }
+
+  - name: portfolio
+    label: Portfolio
+    editor: { preview: false }
+    files:
+      - name: geniuspay
+        label: Chiffres GeniusPay
+        file: _data/geniuspay.yml
+        fields:
+          - { name: date_maj, label: "Date des chiffres (ex. 18/11/2026)", widget: string }
+          - { name: volume, label: Volume global traité (FCFA), widget: number, value_type: int }
+          - { name: transactions, label: Nombre de transactions, widget: number, value_type: int }
+          - { name: marchands, label: Nombre de marchands, widget: number, value_type: int }
+          - { name: inscriptions, label: Nombre d'inscriptions, widget: number, value_type: int }
+          - { name: pays, label: "Pays couverts (ex. 26+)", widget: string }
+      - name: contact
+        label: Contact et photo
+        file: _data/contact.yml
+        fields:
+          - { name: photo, label: Photo de profil, widget: image, required: false }
+          - { name: email, label: E-mail, widget: string, required: false }
+          - { name: telephone, label: Téléphone, widget: string, required: false }
+          - { name: linkedin, label: Lien LinkedIn, widget: string, required: false }

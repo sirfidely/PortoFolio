@@ -1,0 +1,11 @@
+<ul class="posts">
+{%- for post in include.posts -%}
+  <li>
+    <a href="{{ post.url | relative_url }}">
+      <span class="pd">{% include date.html d=post.date %}</span>
+      <span class="pt">{{ post.title }}</span>
+      {% if post.description %}<span class="pe">{{ post.description }}</span>{% endif %}
+    </a>
+  </li>
+{%- endfor -%}
+</ul>

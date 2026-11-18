@@ -1,0 +1,27 @@
+---
+layout: default
+title: Projets et activités
+description: Tous les produits et activités sur lesquels Fidel Mondésir N'zoué a travaillé.
+---
+{%- assign tous = site.projets | sort: "ordre" -%}
+{%- assign produits = tous | where: "type", "Produit" -%}
+{%- assign activites = tous | where: "type", "Activité" -%}
+<header class="mast post-mast">
+  <div class="wrap">
+    <p class="eyebrow">Projets</p>
+    <h1>Tout ce sur quoi j'ai travaillé</h1>
+    <p class="lede">{{ produits.size }} produits et {{ activites.size }} activités. Chaque fiche renvoie au journal du projet sur le blog.</p>
+  </div>
+</header>
+<main>
+  <section><div class="wrap">
+    <div class="sh"><p class="eyebrow">Produits</p><div><h2>Produits conçus et lancés</h2></div></div>
+    <div class="prods">{% for p in produits %}{% include projetcard.html p=p %}{% endfor %}</div>
+  </div></section>
+  {% if activites.size > 0 %}
+  <section><div class="wrap">
+    <div class="sh"><p class="eyebrow">Activités</p><div><h2>Formation et engagement</h2></div></div>
+    <div class="prods">{% for p in activites %}{% include projetcard.html p=p %}{% endfor %}</div>
+  </div></section>
+  {% endif %}
+</main>

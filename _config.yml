@@ -1,0 +1,33 @@
+title: "Fidel Mondésir N'zoué"
+description: "Chief Product Officer et co-fondateur de GeniusPay. Produits, parcours, expertise et blog."
+lang: fr
+url: "https://geniuslabs.tech"
+baseurl: ""
+author: "Fidel Mondésir N'zoué"
+permalink: /blog/:year/:month/:title/
+timezone: Africa/Abidjan
+markdown: kramdown
+kramdown:
+  input: GFM
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+feed:
+  path: blog/feed.xml
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+include:
+  - admin
+collections:
+  projets:
+    output: true
+    permalink: /projets/:name/
+defaults:
+  - scope: { path: "", type: projets }
+    values: { layout: projet }
+  - scope: { path: "", type: posts }
+    values: { layout: post }
